@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  
+<head>
+  <meta charset="utf-8">
+  
+  <title>Archives | Megh&#39;s Blog</title>
+  <meta name="author" content="Megh Parikh">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Megh&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <meta http-equiv="Content-Language" content="en"/>
+  
+
+  <link href="/blog/img/favicon.png" rel="icon">
+  
+    <link rel="apple-touch-icon" href="/blog/img/apple-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/blog/img/apple-icon.png">
+    
+
+  <link rel="alternate" href="/blog/atom.xml" title="Megh&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  
+  <style type="text/css">
+  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
+body{ -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+
+  
+
+  
+    article .post-content-index .entry{max-height: 550px; overflow:hidden;}
+  
+</style>
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'null', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+
+
+
+
+  
+    
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400|Playball' rel='stylesheet' type='text/css'>
+    
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="padding">
+	<div class="alignleft logo">
+	  <h1><a href="/blog/">Megh&#39;s Blog</a></h1>
+	</div>
+	<nav id="main-nav" class="alignright">
+		<input type="checkbox" id="toggle" />
+		<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick><i class="fa fa-bars"></i></label>
+	  <ul class="menu">
+	    
+	      <li><a href="/">Home</a></li>
+	    
+	      <li><a href="/archives">Archives</a></li>
+	    
+	    <li><a href="https://github.com/meghprkh"><i class="fa fa-github fa-lg"></i></a></li>
+	    <li><a href="mailto:meghprkh@gmail.com"><i class="fa fa-envelope"></i></a></li>
+	    
+	  </ul>
+	</nav>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="page-heading-wrap">
+  	<div class="inner">
+      <div class="padding">
+    		
+          <h2>Musings on open-source, GNOME, Fedora etc</h2>
+        
+      </div>
+  	</div>
+  </div>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
+<h2 class="archive-title">Archives</h2>
+
+
+  
+    <article class="post">
+  
+  
+    <div class="post-content-index">
+  
+      
+        <header>
+          <div class="icon"></div>
+            
+    
+      <h1 class="title transition"><a href="/blog/2014/12/17/Creating-an-RPM-package-for-a-PHP-PEAR-module/">Creating an RPM package for a PHP PEAR module</a></h1>
+    
+  
+          <ul>
+            <li>
+              <span class="heading-span">Posted on: </span>
+              <time datetime="2014-12-17T15:00:47.000Z">Dec 17 2014</time>
+            </li>
+            
+              <li>
+                <span class="heading-span">By: </span>
+
+                
+                  <a href="/">Megh Parikh</a>
+                
+
+              </li>
+            
+            <li>
+              <span class="heading-span">With: </span>
+              
+                <a href="/blog/2014/12/17/Creating-an-RPM-package-for-a-PHP-PEAR-module/#disqus_thread">Comments</a>
+
+              
+          </ul>
+        </header>
+      
+      <div class="entry">
+        
+          
+            <p>I am participating in Google Code In 2014 and two of my tasks were based on RPM packaging for Fedora.<br><a href="http://www.google-melange.com/gci/task/view/google/gci2014/5262603731337216" target="_blank" rel="external">The first</a> was packaging <a href="http://www.phalconphp.com/en/" target="_blank" rel="external">PhalconPHP</a> for Fedora while <a href="http://www.google-melange.com/gci/task/view/google/gci2014/5774064475963392" target="_blank" rel="external">the second</a> was packaging <a href="http://cakephp.org/" target="_blank" rel="external">CakePHP</a>.<br>Phalcon is an C extension while Cake is a PEAR/Composer extension.</p>
+<p>I will discuss the easier of the two, Cake as it was a PEAR package.</p>
+<p>So first of all, you need to learn some RPM Packaging Basics. <a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package" target="_blank" rel="external">This link</a> briefly introduces us to the necessary tools and their setup. But the above link does not introduce us to <a href="http://copr.fedoraproject.org/" target="_blank" rel="external">Copr</a> which may be used to distribute and even build our RPMS on different platforms (we can use it as a sort of substitute for <a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package#Mock_and_Koji" target="_blank" rel="external">Koji or Mock</a>).</p>
+<p>Then I recommend that you read [PHP Packaging wiki](<a href="http://fedoraproject.org/wiki/Packaging" target="_blank" rel="external">http://fedoraproject.org/wiki/Packaging</a>:</p>
+<h2 id="The_Channel_package">The Channel package</h2>
+<p>So lets say we have identified the PEAR channel (pear.example.org) and it is not the standard PEAR channel. So we need to create a CHANNEL package.</p>
+<p>So lets create the SPEC file : </p>
+<script src="https://gist.github.com/066d9477881f168c77b4.js"></script>
+
+<p>As you can see you just need to edit a few lines (lines 2,3) to update the channel name and URL and the last lines for proper changelogs.</p>
+<p>Now you can build this spec using the <code>rpmbuild</code> command.</p>
+<p>Install the generated RPM on your system (provided the build is successful).</p>
+<h2 id="The_PEAR_Package">The PEAR Package</h2>
+<p>Now lets head on to creating the actual SPEC file of the RPM package.</p>
+<ul>
+<li>First install the <code>php-pear-PEAR-Command-Packaging</code> package.</li>
+<li>Download the PEAR package from the channel (mostly <em><a href="http://channelname/get/name-version.tgz" target="_blank" rel="external">http://channelname/get/name-version.tgz</a></em>)</li>
+<li>Run <code>pear make-rpm-spec Foo.tgz</code> .</li>
+<li>and a spec file will be generated for you (with all required files) …</li>
+<li>… but if it is not from the standard PEAR channel, you will need to add the channel to the requires and modify certain lines …</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="variable">%global</span> pear_name example</div><div class="line"><span class="variable">%global</span> pear_channel pear.example.org</div><div class="line"></div><div class="line"></div><div class="line">URL:            http:<span class="regexp">//</span><span class="variable">%{pear_channel}</span>/<span class="keyword">package</span>/<span class="variable">%{pear_name}</span></div><div class="line">Source<span class="number">0</span>:        http:<span class="regexp">//</span><span class="variable">%{pear_channel}</span>/get/<span class="variable">%{pear_name}</span>-<span class="variable">%{version}</span>.tgz</div><div class="line"></div><div class="line"></div><div class="line">BuildRequires:  php-channel(<span class="variable">%{pear_channel}</span>)</div><div class="line">Requires:       php-channel(<span class="variable">%{pear_channel}</span>)</div></pre></td></tr></table></figure>
+
+<ul>
+<li>You may look at <a href="https://gist.github.com/meghprkh/39fa65e683f36a4b3996" target="_blank" rel="external">my spec for CakePHP</a></li>
+<li>Done now You just need to build it …</li>
+<li>If the build fails make sure you had installed the Channel Package</li>
+</ul>
+<h2 id="The_Copr_Build_System">The Copr Build System</h2>
+<p>Lets say you have Fedora 20 on your system but you also want to build it for other Fedora and EPEL versions and also make the installation simpler for the end user. So the right tool you need to use is the <a href="http://copr.fedoraproject.org/" target="_blank" rel="external">Copr</a> Build System.</p>
+<ul>
+<li>Upload your SRPMs to some file sharing service which permits direct downloads through a link (I used GitHub but thats a bad habit for git is extremely slow with binary files (SRPMS are gzipped files)).</li>
+<li>Go to the Copr build system page.</li>
+<li>Read their wiki a little.</li>
+<li>Login and create a new repo</li>
+<li>First build the Channel package in your repo</li>
+<li>Drink some coffee. Its gonna take some time.</li>
+<li>Next build the PEAR package (build it after the first completes for it is dependent onthe channel package)</li>
+<li>Share your work.</li>
+<li>You may see my repo for <a href="https://copr.fedoraproject.org/coprs/meghprkh/cakephp/" target="_blank" rel="external"> a basic installation guide</a></li>
+</ul>
+
+          
+        
+      </div>
+      <footer>
+        
+          <div class="alignright">
+            <a href="/blog/2014/12/17/Creating-an-RPM-package-for-a-PHP-PEAR-module/#more" class="more-link">Continue Reading<i class="fa fa-long-arrow-right fa-1"></i></a>
+          </div>
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+
+  
+
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+
+
+
+
+   </div></div>
+    <aside id="sidebar" class="alignright"><div class="padding">
+	
+	  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:meghprkh.github.io/blog">
+  </form>
+</div>
+	
+	  
+<div class="widget recent-post">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/blog/2014/12/17/Creating-an-RPM-package-for-a-PHP-PEAR-module/">Creating an RPM package for a PHP PEAR module</a>
+      </li>
+    
+  </ul>
+</div>
+
+	
+	  
+	
+	  
+	
+</div></aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="padding">
+	<div class="alignleft">
+	  
+	  &copy; 2014 Megh Parikh
+	  
+	  Powerd by <a href="http://hexo.io/" target="_blank">hexo</a>
+	  and Theme by <a href="https://github.com/halfer53/metro-light" target="_blank">metro-light</a>
+	</div>
+
+	<div class="alignright">
+		
+		
+			<a href="https://github.com/https://github.com/meghprkh" target="_blank" title="Megh Parikh Github"><i class="fa fa-github-square"></i></a>	
+		
+		
+		
+		
+		
+		
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div></footer>
+  
+
+		<script type="text/javascript">
+		var disqus_shortname = 'meghblog';
+
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		</script>
+
+		<script type="text/javascript">
+		var disqus_shortname = 'meghblog'; 
+
+		(function () {
+		var s = document.createElement('script'); s.async = true;
+		s.type = 'text/javascript';
+		s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+		}());
+		</script>
+
+  
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+<script src="/blog/js/gallery.js"></script>
+
+
+
+<script type="text/javascript">
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 400) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+
+
+</body>
+</html>
